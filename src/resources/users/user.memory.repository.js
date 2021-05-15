@@ -1,12 +1,11 @@
 const users = [];
 
 const getAll = async () => 
-  // TODO: mock implementation. should be replaced during task development
-   []
-;
+users  
+
 
 async function createUser(user) {
-  users[user.id].push(user);
+  users.push(user);
 };
 
 

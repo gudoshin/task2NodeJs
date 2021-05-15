@@ -14,7 +14,7 @@ router.route('/').post(async (req, res) => {
     usersService.validateUser(req.body);
     const user = new User(req.body);
     usersService.createUser(user);
-    res.json(toResponse(user));
+    res.status(201).json(toResponse(user));
   } catch (error) {
     res.send(400);
   }  

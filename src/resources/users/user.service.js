@@ -8,6 +8,7 @@ const UserSchema = Joi.object({
 
     login: Joi.string().required()
 });
+
 const getAll = () => usersRepo.getAll();
 
 const createUser = (user) => {
