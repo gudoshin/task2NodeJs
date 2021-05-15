@@ -11,6 +11,8 @@ const UserSchema = Joi.object({
 
 const getAll = () => usersRepo.getAll();
 
+const getUser = (id) => usersRepo.getUser(id);
+
 const createUser = (user) => {
     usersRepo.createUser(user);
 };
@@ -20,4 +22,4 @@ const validateUser = (user) =>{
     if (result.error) throw new Error('неверный формат данных');
 } 
 
-module.exports = { getAll, createUser, validateUser };
+module.exports = { getAll, createUser, validateUser, getUser };

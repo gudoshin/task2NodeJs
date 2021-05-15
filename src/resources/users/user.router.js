@@ -20,4 +20,14 @@ router.route('/').post(async (req, res) => {
   }  
 });
 
+router.route('/:id').get(async (req, res) => {
+  try {
+    const {id} = req.params;
+    const user = await usersService.getUser(id);
+    res.json(toResponse(user));
+  } catch (error) {
+    res.send(404);
+  }
+});
+
 module.exports = router;
