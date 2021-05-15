@@ -15,4 +15,23 @@ async function getUser(id) {
   return user;
 }
 
-module.exports = { getAll, createUser, getUser };
+async function updateUser(id, data) {
+  let user = '';
+  users.forEach( item => {
+    if (item.id === id){
+      user = item;
+    }
+  } );
+  const index = users.indexOf(user);
+  users[index].name = data.name;
+  users[index].login = data.login;
+  users[index].password = data.password;
+  return getUser(id);
+};
+
+async function deleteUser(id) {
+  const user = await getUser(id);
+  const index = users.indexOf(user);
+  delete users[index];
+};
+module.exports = { getAll, createUser, getUser, updateUser, deleteUser };

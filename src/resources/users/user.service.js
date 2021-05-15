@@ -6,7 +6,9 @@ const UserSchema = Joi.object({
 
     password: Joi.string().required(),
 
-    login: Joi.string().required()
+    login: Joi.string().required(),
+
+    id: Joi.string()
 });
 
 const getAll = () => usersRepo.getAll();
@@ -19,7 +21,13 @@ const createUser = (user) => {
 
 const validateUser = (user) =>{
     const result = UserSchema.validate(user);
-    if (result.error) throw new Error('неверный формат данных');
+    if (result.error) {
+        throw new Error(`неверный формат данных`);
+    }
 } 
 
-module.exports = { getAll, createUser, validateUser, getUser };
+const updateUser = (id, data) => usersRepo.updateUser(id,data);
+
+const deleteUser = (id) => usersRepo.deleteUser(id);
+
+module.exports = { getAll, createUser, validateUser, getUser, updateUser, deleteUser};
