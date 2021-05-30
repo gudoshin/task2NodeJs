@@ -1,40 +1,48 @@
-const Joi = require('joi');
 const tasksRepo = require('./task.memory.repository');
 
-const TaskSchema = Joi.object({
-    
-    id: Joi.string(),
+/**
+ * Calling the function "create task"
+ * @param {object} task Task Id
+ * @returns {Function} tasksRepo.createTask(task) the returned function
+ */
+const createTask = (task) => tasksRepo.createTask(task);
 
-    title: Joi.string().required(),
+/**
+ * Calling the function delete task
+ * @param {string} boardId Board Id
+ * @param {string} taskId Task Id
+ * @returns {Function} tasksRepo.deleteTask(boardId, taskId) the returned function
+ */
+const deleteTask = (boardId, taskId) => tasksRepo.deleteTask(boardId, taskId);
 
-    order: Joi.number().required(),
-    
-    description: Joi.string().required(),
-    
-    userId: Joi.any().required(),
+/**
+ * Calling the function getTasksByBoardId
+ * @param {string} boardId Board Id
+ * @returns  {Function} tasksRepo.getTasksByBoardId(boardId) the returned function
+ */
+const getTasksByBoardId = (boardId) => tasksRepo.getTasksByBoardId(boardId);
 
-    boardId: Joi.any().required(),
+/**
+ * Calling the function getTaskByBoardIdAndTaskId
+ * @param {string} boardId Board Id
+ * @param {string} taskId Task Id
+ * @returns {Function} tasksRepo.getTaskByBoardIdAndTaskId(boardId, taskId) the returned function
+ */
+const getTaskByBoardIdAndTaskId = (boardId, taskId) =>
+  tasksRepo.getTaskByBoardIdAndTaskId(boardId, taskId);
 
-    columnId: Joi.any().required()
-});
+/**
+ * Calling the function update task
+ * @param {string} id Task Id
+ * @param {string} title title data
+ * @param {string} order order data
+ * @param {string} description description task
+ * @param {string} userId User Id
+ * @param {string} boardId  Board Id
+ * @param {string} columnId Column Id
+ * @returns {Function} tasksRepo.updateTask( id, title, order, description, userId, boardId, columnId) the returned function
+ */
+const updateTask = (id, title, order, description, userId, boardId, columnId) =>
+  tasksRepo.updateTask( id, title, order, description, userId, boardId, columnId);
 
-const getAll = (boardId) => tasksRepo.getAll(boardId);
-
-const getTask = (id, taskId) => tasksRepo.getTask(id, taskId);
-
-const createTask = (task) => {
-    tasksRepo.createTask(task);
-};
-
-const validateTask = (task) =>{
-    const result = TaskSchema.validate(task);
-    if (result.error) {
-        throw new Error(`неверный формат данных`);
-    }
-} 
-
-const updateTask = (id, taskId, data) => tasksRepo.updateTask(id, taskId, data);
-
-const deleteTask = (id, taskId) => tasksRepo.deleteTask(id, taskId);
-
-module.exports = { getAll, createTask, validateTask, getTask, updateTask, deleteTask};
+module.exports = {deleteTask, getTasksByBoardId, getTaskByBoardIdAndTaskId, createTask, updateTask};
