@@ -1,15 +1,15 @@
+import { Request, Response } from "express";
 const router = require('express').Router();
 const { toResponse } = require('./user.model');
 const User = require('./user.model');
 const usersService = require('./user.service');
 
-router.route('/').get(async (req, res) => {
+router.route('/').get(async (res: Response ) => {
   const users = await usersService.getAll();
-  // map user fields to exclude secret fields like "password"
   res.json(users.map(User.toResponse));
 });
 
-router.route('/').post(async (req, res) => {  
+router.route('/').post(async (req: Request, res: Response) => {  
   try {
     usersService.validateUser(req.body);
     const user = new User(req.body);
@@ -20,7 +20,7 @@ router.route('/').post(async (req, res) => {
   }  
 });
 
-router.route('/:id').get(async (req, res) => {
+router.route('/:id').get(async (req: Request, res: Response) => {
   try {
     const {id} = req.params;
     const user = await usersService.getUser(id);
@@ -30,7 +30,7 @@ router.route('/:id').get(async (req, res) => {
   }
 });
 
-router.route('/:id').put(async (req, res) => {  
+router.route('/:id').put(async (req: Request, res: Response) => {  
   try {
     const {id} = req.params;
     await usersService.validateUser(req.body);
@@ -41,7 +41,7 @@ router.route('/:id').put(async (req, res) => {
   }  
 });
 
-router.route('/:id').delete(async (req, res) => {  
+router.route('/:id').delete(async (req: Request, res: Response) => {  
   try {
     const {id} = req.params;
     await usersService.deleteUser(id);
