@@ -4,7 +4,7 @@ const users = [];
 
 /**
  * Returns all users
- * @returns {Array.<Object>} Array of users
+ * @returns {Array.<object>} Array of users
  */
  async function getAll() {
    return users;
@@ -21,7 +21,7 @@ async function createUser(user) {
 /**
  * Returns the user by id
  * @param {string} id User ID
- * @returns {Object} return User object
+ * @returns {object} return User object
  */
 async function getUser(id) {
   let user = '';
@@ -31,10 +31,10 @@ async function getUser(id) {
 }
 
 /**
- * Update user bu ID
+ * Update user by ID
  * @param {string} id User ID
- * @param {Object} data User object
- * @returns {Object} the returned User
+ * @param {object} data User object
+ * @returns {object} the returned User
  */
 async function updateUser(id, data) {
   let user = '';

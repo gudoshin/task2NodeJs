@@ -11,6 +11,11 @@ class Bord {
     this.columns = columns;
   }
 
+/**
+ * Return board
+ * @param {object} bord Board object
+ * @returns {object} returned Board object
+ */
   static toResponse(bord) {
     return bord;
   }

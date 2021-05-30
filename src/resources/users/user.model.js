@@ -15,8 +15,8 @@ class User {
 
   /**
    * Returns user without password
-   * @param {Object} user 
-   * @returns {Object} User object without password
+   * @param {object} user User object
+   * @returns {object} User object without password
    */
   static toResponse(user) {
     const { id, name, login } = user;
