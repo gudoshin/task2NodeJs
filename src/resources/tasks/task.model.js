@@ -19,7 +19,7 @@ class Task {
         this.columnId = columnId;
     }
 
-    static toResponce(task) {
+    static toResponse(task) {
         return task;
     }
 }

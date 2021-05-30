@@ -10,7 +10,10 @@ const UserSchema = Joi.object({
 
     id: Joi.string()
 });
-
+/**
+ * The function returns the function "get all users"
+ * @returns {function} function usersRepo.getAll()
+ */
 const getAll = () => usersRepo.getAll();
 
 const getUser = (id) => usersRepo.getUser(id);

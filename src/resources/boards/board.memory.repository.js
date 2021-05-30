@@ -1,3 +1,5 @@
+const { deleteBoardInTasks } = require('../tasks/task.memory.repository');
+
 const boards = [];
 
 const getAll = async () => boards;
@@ -7,7 +9,7 @@ async function createBoard(board) {
 }
 
 async function getBoard(id) {
-    let board = '';
+  let board = '';
     boards.forEach(item => {if (item.id === id) board = item;});
     if (board === '') throw new Error('Board not found');
     return board;
@@ -21,16 +23,15 @@ async function updateBoard(id, data) {
       }
     } );
     const index = boards.indexOf(board);
-    boards[index].name = data.name;
-    boards[index].login = data.login;
-    boards[index].password = data.password;
+    boards[index] = data;
     return getBoard(id);
   };
 
   async function deleteBoard(id) {
     const board = await getBoard(id);
     const index = boards.indexOf(board);
-    delete boards[index];
+    await deleteBoardInTasks(id);
+    boards.splice(index, 1);
   };
   module.exports = { getAll, createBoard, getBoard, updateBoard, deleteBoard };
   

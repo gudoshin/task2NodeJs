@@ -3,7 +3,7 @@ const boardsRepo = require('./board.memory.repository');
 
 const BoardSchema = Joi.object({
     
-    id: Joi.string().required,
+    id: Joi.string(),
 
     title: Joi.string().required(),
 

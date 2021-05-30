@@ -1,3 +1,5 @@
+const { deleteUserInTasks } = require('../tasks/task.memory.repository');
+
 const users = [];
 
 const getAll = async () => 
@@ -33,5 +35,6 @@ async function deleteUser(id) {
   const user = await getUser(id);
   const index = users.indexOf(user);
   delete users[index];
+  await deleteUserInTasks(id);
 };
 module.exports = { getAll, createUser, getUser, updateUser, deleteUser };
