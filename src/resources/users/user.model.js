@@ -13,6 +13,11 @@ class User {
     this.password = password;
   }
 
+  /**
+   * Returns user without password
+   * @param {Object} user 
+   * @returns {Object} User object without password
+   */
   static toResponse(user) {
     const { id, name, login } = user;
     return { id, name, login };
