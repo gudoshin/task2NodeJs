@@ -15,7 +15,7 @@ router.route('/:boardId/tasks/').get(async (req, res) => {
 router.route('/:boardId/tasks/').post(async (req, res) => {
   const { boardId } = req.params;
   const { title, order, description, userId, columnId } = req.body;
-  const result = await tasksService.postTask(
+  const result = await tasksService.createTask(
     new Task({ title, order, description, userId, boardId, columnId })
   );
   if (typeof title === 'string') {

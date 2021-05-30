@@ -19,6 +19,11 @@ class Task {
         this.columnId = columnId;
     }
 
+    /**
+     * Returns task
+     * @param {object} task Task object
+     * @returns {object} returned Task object
+     */
     static toResponse(task) {
         return task;
     }
